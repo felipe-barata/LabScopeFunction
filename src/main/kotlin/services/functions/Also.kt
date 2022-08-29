@@ -1,25 +1,25 @@
 package services.functions
 
-import domain.Pessoa
-import repository.PessoaRepository
+import domain.Person
+import repository.PersonRepository
 
 object Also {
 
-    fun testaAlso() {
-        val pessoa = Pessoa(
+    fun tryAlso() {
+        val person = Person(
             "Marcia", 60, "F", "55555555555"
         )
-        PessoaRepository().insereNovaPessoa(pessoa).also {
-            println("Inseriu nova pessoa: $it")
+        PersonRepository().insertNewPerson(person).also {
+            println("Inserted new person: $it")
         }
     }
 
-    fun escreveFuncaoSemAlso() {
-        val pessoa = Pessoa(
+    fun tryWithoutAlso() {
+        val person = Person(
             "Marcia", 60, "F", "55555555555"
         )
-        val inseriuNovaPessoa = PessoaRepository().insereNovaPessoa(pessoa)
-        println("Inseriu nova pessoa: $inseriuNovaPessoa")
+        val insertedNewPerson = PersonRepository().insertNewPerson(person)
+        println("Inserted new person: $insertedNewPerson")
     }
 
 }

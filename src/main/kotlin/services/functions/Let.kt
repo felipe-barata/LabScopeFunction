@@ -1,38 +1,38 @@
 package services.functions
 
-import repository.PessoaRepository
+import repository.PersonRepository
 
 object Let {
 
-    private val pessoaRepository = PessoaRepository()
+    private val personRepository = PersonRepository()
 
-    fun testaLetEmOperacoesComObjetosNulos() {
-        pessoaRepository.procuraPessoaPeloCPF(CPF)?.let {
-            println("Encontrou a pessoa ${it.nome}!")
+    fun tryLetOnOperationsWithNullObjects() {
+        personRepository.findPersonByTaxId(CPF)?.let {
+            println("Found person ${it.name}!")
         }
     }
 
-    fun validaObjetosNullSemLet() {
-        val pessoa = pessoaRepository.procuraPessoaPeloCPF(CPF)
+    fun tryNullObjectsWithoutLet() {
+        val pessoa = personRepository.findPersonByTaxId(CPF)
         if (pessoa != null) {
-            println("Encontrou a pessoa ${pessoa.nome}!")
+            println("Found person ${pessoa.name}!")
         }
     }
 
-    fun testaLetEmOperacoesEncadeadas() {
-        pessoaRepository.retornaTodasPessoas().filter { pessoa -> pessoa.sexo == "M" }.count().let {
+    fun tryLetChainingCalls() {
+        personRepository.getAllPersons().filter { person -> person.sex == "M" }.count().let {
             println(it)
         }
     }
 
-    fun testaLetEmOperacoesEncadeadasRenomeandoArgumento() {
-        pessoaRepository.retornaTodasPessoas().filter { pessoa -> pessoa.sexo == "M" }.count().let { quantidade ->
+    fun tryLetChainingCallsAndRenamingArgument() {
+        personRepository.getAllPersons().filter { pessoa -> pessoa.sex == "M" }.count().let { quantidade ->
             println(quantidade)
         }
     }
 
-    fun testaLetEmOperacoesEncadeadasEmFuncaoUnica() {
-        pessoaRepository.retornaTodasPessoas().filter { pessoa -> pessoa.sexo == "M" }.count().let(::println)
+    fun tryLetChainingCallsAndWithLoneFunction() {
+        personRepository.getAllPersons().filter { pessoa -> pessoa.sex == "M" }.count().let(::println)
     }
 
     private const val CPF = "11111111111"

@@ -1,15 +1,15 @@
 package services.functions
 
-import domain.Endereco
-import domain.Pessoa
+import domain.Address
+import domain.Person
 
 object Apply {
 
-    fun testaApply() {
-        val jose = Pessoa(
+    fun tryApply() {
+        val jose = Person(
             "Jose", 50, "M", "44444444444"
         ).apply {
-            endereco = Endereco(
+            address = Address(
                 "Rua Luciano penatti",
                 "Sao Paulo",
                 "SP",
@@ -17,22 +17,22 @@ object Apply {
                 "N/A"
             )
         }
-        println(jose.endereco)
+        println(jose.address)
     }
 
-    fun escreveFuncaoSemApply() {
-        val jose = Pessoa(
+    fun tryWithoutApply() {
+        val jose = Person(
             "Jose", 50, "M", "44444444444"
         )
-        val endereco = Endereco(
+        val endereco = Address(
             "Rua Luciano penatti",
             "Sao Paulo",
             "SP",
             "S/N",
             "N/A"
         )
-        jose.endereco = endereco
-        println(jose.endereco)
+        jose.address = endereco
+        println(jose.address)
     }
 
 }

@@ -1,23 +1,23 @@
 package services.functions
 
-import repository.PessoaRepository
+import repository.PersonRepository
 
 object With {
 
-    private val pessoaRepository = PessoaRepository()
+    private val personRepository = PersonRepository()
 
-    fun usandoWithParaRealizarCalculos() {
-        val pessoas = pessoaRepository.retornaTodasPessoas()
-        with(pessoas) {
-            val mediaDeIdade = map { pessoa -> pessoa.idade }.sum().div(size)
-            println("Media de idade: $mediaDeIdade")
+    fun tryWithToDoSomeCalculations() {
+        val people = personRepository.getAllPersons()
+        with(people) {
+            val averageAge = map { person -> person.age }.sum().div(size)
+            println("Average age: $averageAge")
         }
     }
 
-    fun reescreveSemWith() {
-        val pessoas = pessoaRepository.retornaTodasPessoas()
-        val mediaDeIdade = pessoas.map { pessoa -> pessoa.idade }.sum().div(pessoas.size)
-        println("Media de idade: $mediaDeIdade")
+    fun tryWithoutWith() {
+        val people = personRepository.getAllPersons()
+        val averageAge = people.map { person -> person.age }.sum().div(people.size)
+        println("Average age: $averageAge")
     }
 
 }

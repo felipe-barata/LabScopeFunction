@@ -1,56 +1,56 @@
 package services.functions
 
-import services.BuscaCEPService
+import services.GetAddressService
 
 object Run {
 
-    fun testaWithComoFuncaoDeExtensao() {
-        val buscaCEPGateway = BuscaCEPService()
-        val cepDTO = buscaCEPGateway.run {
-            porta = 8080
+    fun tryWithAsExtensionFunction() {
+        val getAddressService = GetAddressService()
+        val zipCodeDTO = getAddressService.run {
+            port = 8080
             url = "http://10.0.0.1"
-            buscaEnderecoPorCep(CEP)
+            getAddressByZipCode(ZIP_CODE)
         }
-        println("Encontrou CEP: $cepDTO")
+        println("Found ZipCode: $zipCodeDTO")
     }
 
-    fun escreveFuncaoSemWithComoFuncaoDeExtensao() {
-        val buscaCEPGateway = BuscaCEPService()
-        buscaCEPGateway.porta = 8080
-        buscaCEPGateway.url = "http://10.0.0.1"
-        val cepDTO = buscaCEPGateway.buscaEnderecoPorCep(CEP)
-        println("Encontrou CEP: $cepDTO")
+    fun tryWithoutWith() {
+        val getAddressService = GetAddressService()
+        getAddressService.port = 8080
+        getAddressService.url = "http://10.0.0.1"
+        val zipCodeDTO = getAddressService.getAddressByZipCode(ZIP_CODE)
+        println("Found ZipCode: $zipCodeDTO")
     }
 
-    fun reescreveWithComLet() {
-        val buscaCEPGateway = BuscaCEPService()
-        val cepDTO = buscaCEPGateway.let {
-            it.porta = 8080
+    fun rewriteWithAsLet() {
+        val getAddressService = GetAddressService()
+        val zipCodeDTO = getAddressService.let {
+            it.port = 8080
             it.url = "http://10.0.0.1"
-            it.buscaEnderecoPorCep(CEP)
+            it.getAddressByZipCode(ZIP_CODE)
         }
-        println("Encontrou CEP: $cepDTO")
+        println("Found ZipCode: $zipCodeDTO")
     }
 
-    fun testaWithSemFuncaDeExtensao() {
-        val validaEmail = run {
-            val antesDoArroba = "^(.+)"
-            val depoisDoArroba = "(.+)\$"
-            Regex("$antesDoArroba@$depoisDoArroba")
+    fun tryWithAsANonExtensionFunction() {
+        val validateEmail = run {
+            val beforeSign = "^(.+)"
+            val afterSign = "(.+)\$"
+            Regex("$beforeSign@$afterSign")
         }
-        for (match in validaEmail.findAll("teste@gmail.com")) {
+        for (match in validateEmail.findAll("teste@gmail.com")) {
             println(match.value)
         }
     }
 
-    fun reescreveSemWith() {
-        val antesDoArroba = "^(.+)"
-        val depoisDoArroba = "(.+)\$"
-        val validaEmail = Regex("$antesDoArroba@$depoisDoArroba")
-        for (match in validaEmail.findAll("teste@gmail.com")) {
+    fun rewriteWithoutWithAsNonExtensionFunction() {
+        val beforeSign = "^(.+)"
+        val afterSign = "(.+)\$"
+        val validateEmail = Regex("$beforeSign@$afterSign")
+        for (match in validateEmail.findAll("teste@gmail.com")) {
             println(match.value)
         }
     }
 
-    private const val CEP = "14000-000"
+    private const val ZIP_CODE = "14000-000"
 }

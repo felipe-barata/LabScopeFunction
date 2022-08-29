@@ -4,9 +4,9 @@ import java.math.BigDecimal
 
 object IntroducaoScopeFunction {
 
-    fun testaCriacaoDeEscopoTemporario() {
-        val salario = BigDecimal(1000) // Cria variável de teste
-        salario.let {// Cria um novo escopo temporário
+    fun tryUsingScopeFunctions() {
+        val salario = BigDecimal(1000) // Create test variable
+        salario.let {// Creates new temporary scope
             println(it)
         }
     }

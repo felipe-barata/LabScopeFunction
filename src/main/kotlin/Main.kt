@@ -1,7 +1,5 @@
-import services.functions.Run
+import services.functions.TakeIfAndTakeUnless
 
 fun main() {
-    Run.testaWithComoFuncaoDeExtensao()
-    Run.testaWithSemFuncaDeExtensao()
-    Run.reescreveWithComLet()
+    TakeIfAndTakeUnless.tryTakeIfAndTakeUnless()
 }
