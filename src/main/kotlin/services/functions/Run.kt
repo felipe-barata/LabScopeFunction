@@ -4,7 +4,7 @@ import services.GetAddressService
 
 object Run {
 
-    fun tryWithAsExtensionFunction() {
+    fun tryRunAsExtensionFunction() {
         val getAddressService = GetAddressService()
         val zipCodeDTO = getAddressService.run {
             port = 8080
@@ -14,7 +14,7 @@ object Run {
         println("Found ZipCode: $zipCodeDTO")
     }
 
-    fun tryWithoutWith() {
+    fun tryWithoutRun() {
         val getAddressService = GetAddressService()
         getAddressService.port = 8080
         getAddressService.url = "http://10.0.0.1"
@@ -22,7 +22,7 @@ object Run {
         println("Found ZipCode: $zipCodeDTO")
     }
 
-    fun rewriteWithAsLet() {
+    fun rewriteRunAsLet() {
         val getAddressService = GetAddressService()
         val zipCodeDTO = getAddressService.let {
             it.port = 8080
@@ -32,7 +32,7 @@ object Run {
         println("Found ZipCode: $zipCodeDTO")
     }
 
-    fun tryWithAsANonExtensionFunction() {
+    fun tryRunAsANonExtensionFunction() {
         val validateEmail = run {
             val beforeSign = "^(.+)"
             val afterSign = "(.+)\$"
@@ -43,7 +43,7 @@ object Run {
         }
     }
 
-    fun rewriteWithoutWithAsNonExtensionFunction() {
+    fun rewriteWithoutRunAsNonExtensionFunction() {
         val beforeSign = "^(.+)"
         val afterSign = "(.+)\$"
         val validateEmail = Regex("$beforeSign@$afterSign")
