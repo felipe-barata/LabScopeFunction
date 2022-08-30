@@ -9,10 +9,10 @@ object TakeIfAndTakeUnless {
     )
 
     fun tryTakeIfAndTakeUnless() {
-        val personThatCanDrive = person.takeIf { pessoa -> pessoa.age > 18 }
-        val personThatCannotDrive = person.takeUnless { pessoa -> pessoa.age > 18 }
-        println("Retorno takeIf: $personThatCanDrive")
-        println("Retorno takeUnless: $personThatCannotDrive")
+        val personThatCanDrive = person.takeIf { person -> person.age > 18 }
+        val personThatCannotDrive = person.takeUnless { person -> person.age > 18 }
+        println("takeIf: $personThatCanDrive")
+        println("takeUnless: $personThatCannotDrive")
     }
 
 }

@@ -5,6 +5,14 @@ import domain.Person
 
 object Apply {
 
+    private val address = Address(
+        "Rua penatti",
+        "Sao Paulo",
+        "SP",
+        "S/N",
+        "N/A"
+    )
+
     fun tryApply() {
         val jose = Person(
             "Jose", 50, "M", "44444444444"
@@ -16,6 +24,10 @@ object Apply {
                 "S/N",
                 "N/A"
             )
+
+            println(this.address)
+            println(this@Apply.address)
+
         }
         println(jose.address)
     }
