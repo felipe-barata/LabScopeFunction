@@ -7,15 +7,15 @@ object Let {
     private val personRepository = PersonRepository()
 
     fun tryLetOnOperationsWithNullObjects() {
-        personRepository.findPersonByTaxId(CPF)?.let {
+        personRepository.findPersonByTaxId(TAX_ID)?.let {
             println("Found person ${it.name}!")
         }
     }
 
     fun tryNullObjectsWithoutLet() {
-        val pessoa = personRepository.findPersonByTaxId(CPF)
-        if (pessoa != null) {
-            println("Found person ${pessoa.name}!")
+        val person = personRepository.findPersonByTaxId(TAX_ID)
+        if (person != null) {
+            println("Found person ${person.name}!")
         }
     }
 
@@ -26,14 +26,15 @@ object Let {
     }
 
     fun tryLetChainingCallsAndRenamingArgument() {
-        personRepository.getAllPersons().filter { pessoa -> pessoa.sex == "M" }.count().let { quantidade ->
-            println(quantidade)
+        personRepository.getAllPersons().filter { person -> person.sex == "M" }.count().let { quantity ->
+            println(quantity)
+            //do whatever more calls needed
         }
     }
 
     fun tryLetChainingCallsAndWithLoneFunction() {
-        personRepository.getAllPersons().filter { pessoa -> pessoa.sex == "M" }.count().let(::println)
+        personRepository.getAllPersons().filter { person -> person.sex == "M" }.count().let(::println)
     }
 
-    private const val CPF = "11111111111"
+    private const val TAX_ID = "11111111111"
 }

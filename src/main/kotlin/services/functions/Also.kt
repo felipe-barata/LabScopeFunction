@@ -5,21 +5,22 @@ import repository.PersonRepository
 
 object Also {
 
-    fun tryAlso() {
+    fun tryAlso(): Boolean {
         val person = Person(
             "Marcia", 60, "F", "55555555555"
         )
-        PersonRepository().insertNewPerson(person).also {
+        return PersonRepository().insertNewPerson(person).also {
             println("Inserted new person: $it")
         }
     }
 
-    fun tryWithoutAlso() {
+    fun tryWithoutAlso(): Boolean {
         val person = Person(
             "Marcia", 60, "F", "55555555555"
         )
         val insertedNewPerson = PersonRepository().insertNewPerson(person)
         println("Inserted new person: $insertedNewPerson")
+        return insertedNewPerson
     }
 
 }
